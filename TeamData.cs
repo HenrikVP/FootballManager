@@ -16,9 +16,11 @@ namespace FootballManager
         }
         private void AddData()
         {
-            Team t1 = new() { Teamname = "Manchester United"};
-            t1.Players.Add(pData.P1);
-            t1.Players.Add(pData.P2);
+            Team t1 = new() { 
+                Teamname = "Manchester United",
+                Players = new List<Player>() { pData.P1, pData.P2 }
+            };
+
         }
 
 

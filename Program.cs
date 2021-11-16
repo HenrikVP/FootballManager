@@ -2,4 +2,6 @@
 
 Console.WriteLine("Hello, Football World!");
 
-TeamData teamData = new TeamData();
+TeamData teamData = new();
+List<Team> teams = new List<Team>();
+
