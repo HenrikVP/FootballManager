@@ -4,7 +4,7 @@ CREATE TABLE Team (
 id int identity(1,1) primary key,
 TeamName nvarchar(100),
 )
-
+DROP TABLE Player
 CREATE TABLE Player (
 id int identity(1,1) primary key,
 [Name] nvarchar(100),
@@ -14,7 +14,12 @@ DateOfBirth datetime,
 PreferedFoot varchar(10),
 Height int,
 [Weight] int,
-FK_TeamId int FOREIGN KEY REFERENCES Team(id)
+FK_TeamId int,
+CONSTRAINT FKTeamId FOREIGN KEY (FK_TeamId) REFERENCES Team(id)
 )
 
-INSERT INTO Team VALUES ('Manchester City')
+ALTER TABLE Player DROP CONSTRAINT FKTeamId
+TRUNCATE TABLE Team
+INSERT INTO Team VALUES ('Manchester City'), ('Newcastle'), ('Tottenham Spurs')
+
+SELECT * FROM Team
