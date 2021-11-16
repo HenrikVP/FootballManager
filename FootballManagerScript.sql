@@ -1,8 +1,8 @@
 ﻿USE FootballManagerDB
+
 CREATE TABLE Team (
 id int identity(1,1) primary key,
 TeamName nvarchar(100),
-
 )
 
 CREATE TABLE Player (
@@ -16,3 +16,5 @@ Height int,
 [Weight] int,
 FK_TeamId int FOREIGN KEY REFERENCES Team(id)
 )
+
+INSERT INTO Team VALUES ('Manchester City')
