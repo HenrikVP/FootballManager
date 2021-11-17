@@ -17,9 +17,18 @@ foreach (Team team in teamlist)
 
 Console.WriteLine("Players: ");
 List<Player> playerlist = new Sql().ReadPlayerData();
-foreach (Player p in playerlist)
+//foreach (Player p in playerlist)
+//{
+//    Console.WriteLine($"{p.Id}, {p.Name}, {p.Position}, {p.Nationality}, {p.PreferedFoot}, " +
+//        $"{p.Weight}, {p.Height}, {p.DateOfBirth}");
+//}
+
+var subset = from player in playerlist  
+             where player.Id > 100 && player.Id < 120
+             orderby player.Name
+             select player;
+foreach (Player p in subset)
 {
     Console.WriteLine($"{p.Id}, {p.Name}, {p.Position}, {p.Nationality}, {p.PreferedFoot}, " +
         $"{p.Weight}, {p.Height}, {p.DateOfBirth}");
 }
-
