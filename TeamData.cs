@@ -17,7 +17,7 @@ namespace FootballManager
         private void AddData()
         {
             Team t1 = new() { 
-                Teamname = "Manchester United",
+                Name = "Manchester United",
                 Players = new List<Player>() { pData.P1, pData.P2 }
             };
 

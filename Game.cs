@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace FootballManager
 {
-    internal class Team : Superbase
+    internal class Game
     {
-        public List<Player> Players { get; set; }
     }
 }
