@@ -11,5 +11,6 @@
         public Foot PreferedFoot { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
+        public int Skill { get; set; }
     }
 }

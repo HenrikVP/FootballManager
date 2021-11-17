@@ -2,22 +2,31 @@
 {
     internal class Setup
     {
-        Sql sql;
+        Sql sql = new();
         public Setup()
         {
-            Console.WriteLine("Hello, Football World!");
-            sql = new();
-            Start();
+            Console.WriteLine("Hello, Football World!");         
+            //Add teams from DB and players to the teams
+            List<Team> teamlist = Initialize();
+            //Starts a game
+            Game game = new(teamlist[0], teamlist[1]);
         }
-        private void Start()
+        private List<Team> Initialize()
         {
             List<Team> teamlist = sql.ReadTeamData();
-            //ShowTeams(teamlist);
             //AddFootballNames(teamlist);
-            ShowTeams(teamlist);
-
+            
             List<Player> playerlist = sql.ReadPlayerData();
+            int i = 0;
+            foreach (var player in playerlist)
+            {
+                player.Skill = new Random().Next(20, 100);
+                teamlist[i / 20].Players.Add(player);
+                i++;
+            }
+            //ShowTeams(teamlist);
             //ShowPlayers(playerlist);
+            return teamlist;
         }
 
         private void ShowTeams(List<Team> teamlist)
@@ -26,6 +35,10 @@
             foreach (Team team in teamlist)
             {
                 Console.WriteLine(team.Id + " " + team.Name);
+                foreach (var p in team.Players)
+                {
+                    Console.WriteLine($"\t{p.Id} {p.Name} {p.Skill} {p.Position}");
+                }
             }
         }
 
