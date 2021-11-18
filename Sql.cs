@@ -77,7 +77,8 @@ namespace FootballManager
             return playerList;
         }
 
-        internal int UpdateTeamData(Team team)
+        //Eksempel på overloads
+        internal int Update(Team team)
         {
             string queryString = $"UPDATE Team SET TeamName = @teamName WHERE id = @id";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -90,5 +91,19 @@ namespace FootballManager
                 return rowsAffected;
             }
         }
+        internal int Update(Player player)
+        {
+            string queryString = $"UPDATE Player SET Name = @name WHERE id = @id";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = player.Id;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = player.Name;
+                command.Connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected;
+            }
+        }
+
     }
 }

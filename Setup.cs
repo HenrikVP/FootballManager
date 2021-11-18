@@ -9,6 +9,10 @@
             //Add teams from DB and players to the teams
             List<Team> teamlist = Initialize();
             //Starts a game
+            Player p = teamlist[0].Players[5];
+            Console.WriteLine($"Old name: {p.Name} \nNew name: ");
+            p.Name = Console.ReadLine();
+            sql.Update(teamlist[0].Players[5]);
             Game game = new(teamlist[0], teamlist[1]);
         }
         private List<Team> Initialize()
@@ -68,7 +72,7 @@
                     default:
                         break;
                 }
-                int i = sql.UpdateTeamData(team);
+                int i = sql.Update(team);
                 counter += i;
             }
             Console.WriteLine("Rows Affected in total: " + counter);

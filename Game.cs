@@ -41,16 +41,17 @@
                 (GetRandomSkill(t2.Players[7]) +
                 GetRandomSkill(t2.Players[11])) / 2;
 
+            int zone = rnd.Next(0, 3);
             if (TotalMidfieldSkillT1 > TotalMidfieldSkillT2)
             {
                 //T1 gets the attack
-                Console.WriteLine($"{t1.Name} builds up an attack");
-                Attack(t1, t2, rnd.Next(0, 3));
+                Console.WriteLine($"{t1.Name} builds up an attack in the {zone} zone");
+                Attack(t1, t2, zone);
             }
             else
             {
                 //T2 gets the attack
-                Console.WriteLine($"{t2.Name}  builds up an attack");
+                Console.WriteLine($"{t2.Name} builds up an attack in the {zone} zone");
                 Attack(t2, t1, rnd.Next(0, 3));
             }
         }
